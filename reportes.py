@@ -8,10 +8,10 @@ def reporte_inventario():
     print("-" * 40)
     for producto in PRODUCTOS:
         linea = producto["codigo"] + "  " + producto["nombre"]
-        valor = "$" + format(producto["precio"], ".2f")
+        valor = "Q" + format(producto["precio"], ".2f")
         print(linea.ljust(32) + valor.rjust(8))
     print("-" * 40)
-    print("Valor total del inventario: $" + format(valor_inventario(), ".2f"))
+    print("Valor total del inventario: Q" + format(valor_inventario(), ".2f"))
     # pendiente: exportar a archivo
 
 if __name__ == "__main__":
