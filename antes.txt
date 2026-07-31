@@ -1,0 +1,10 @@
+============================================
+    COMISIONES DEL MES - LA COMERCIAL
+============================================
+María López: Q 3600.0
+Carlos Pérez: Q 1425.0
+Ana García: Q 5396.0
+José Ramírez: Q 790.0
+Lucía Morales: Q 2672.0
+--------------------------------------------
+Total a pagar: Q 13883.0
