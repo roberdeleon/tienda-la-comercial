@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# programa de comisiones
-# hecho por kevin, no tocar, ya funciona
+"""Calcula e imprime las comisiones mensuales de los vendedores."""
 
 ANCHO_REPORTE = 44
 UMBRAL_COMISION_ALTA = 30000
@@ -10,7 +9,6 @@ UMBRAL_BONO = 50000
 MONTO_BONO = 500
 DECIMALES_MONEDA = 2
 
-# lista de vendedores
 VENDEDORES = [
     ("María López", 45000.00),
     ("Carlos Pérez", 28500.00),
@@ -21,17 +19,17 @@ VENDEDORES = [
 
 
 def obtener_tasa_comision(ventas_mensuales):
-    # si vendio mas de 30000
+    """Devuelve la tasa aplicable según las ventas del mes."""
+    # La regla vigente exige superar el umbral, no solamente alcanzarlo.
     if ventas_mensuales > UMBRAL_COMISION_ALTA:
-        # calcula la comision del 8%
         return TASA_COMISION_ALTA
 
-    # calcula la comision del 5%
     return TASA_COMISION_BASE
 
 
 def calcular_bono(ventas_mensuales):
-    # el bono es de 300
+    """Devuelve el bono adicional correspondiente al vendedor."""
+    # El bono se concede únicamente cuando las ventas superan el umbral.
     if ventas_mensuales > UMBRAL_BONO:
         return MONTO_BONO
 
@@ -39,6 +37,7 @@ def calcular_bono(ventas_mensuales):
 
 
 def calcular_pago_vendedor(ventas_mensuales):
+    """Calcula la comisión y el bono de un vendedor."""
     tasa_comision = obtener_tasa_comision(ventas_mensuales)
     comision = ventas_mensuales * tasa_comision
     comision = round(comision, DECIMALES_MONEDA)
@@ -52,10 +51,10 @@ def calcular_pago_vendedor(ventas_mensuales):
 
 
 def calcular_comisiones(vendedores):
+    """Calcula los pagos individuales y el total mensual."""
     pagos_vendedores = []
     total_pagar = 0
 
-    # recorre la lista
     for nombre_vendedor, ventas_mensuales in vendedores:
         total_vendedor = calcular_pago_vendedor(ventas_mensuales)
         pagos_vendedores.append(
@@ -67,6 +66,7 @@ def calcular_comisiones(vendedores):
 
 
 def imprimir_reporte_comisiones():
+    """Imprime el reporte mensual conservando el formato original."""
     pagos_vendedores, total_pagar = calcular_comisiones(VENDEDORES)
 
     print("=" * ANCHO_REPORTE)
@@ -76,8 +76,6 @@ def imprimir_reporte_comisiones():
     for nombre_vendedor, total_vendedor in pagos_vendedores:
         print(nombre_vendedor + ": Q " + str(total_vendedor))
 
-    # ta = tp * 1.12
-    # print("con iva", ta)
     print("-" * ANCHO_REPORTE)
     print(
         "Total a pagar: Q "
